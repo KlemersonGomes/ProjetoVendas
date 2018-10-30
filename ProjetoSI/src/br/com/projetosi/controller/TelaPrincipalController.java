@@ -44,5 +44,15 @@ public class TelaPrincipalController implements Initializable {
         AnchorPane a = (AnchorPane)FXMLLoader.load(getClass().getResource("/br/com/projetosi/view/TelaCliente.fxml"));
         anchorPane.getChildren().setAll(a);
     }
+    
+    @FXML
+    public void handleMenuItemVendas() throws IOException {
+        
+        AnchorPane a = FXMLLoader.load(getClass().getResource("/br/com/projetosi/view/TelaVendas.fxml"));
+        anchorPane.getChildren().setAll(a);
+    }
+    
+    
+    
 
 }

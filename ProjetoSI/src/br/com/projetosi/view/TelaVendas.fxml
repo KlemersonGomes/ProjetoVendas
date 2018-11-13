@@ -33,7 +33,7 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <GridPane fx:id="labelVendaData" layoutX="31.0" layoutY="83.0" prefHeight="247.0" prefWidth="276.0">
+                  <GridPane layoutX="31.0" layoutY="83.0" prefHeight="247.0" prefWidth="276.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="133.0" minWidth="10.0" prefWidth="86.0" />
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="190.0" minWidth="10.0" prefWidth="190.0" />
@@ -58,7 +58,7 @@
                         <Label fx:id="labelVendaCliente" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                      </children>
                   </GridPane>
-                  <Button fx:id="buttonInserir" layoutX="75.0" layoutY="358.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" text="Inserir" />
+                  <Button fx:id="buttonInserir" layoutX="75.0" layoutY="358.0" mnemonicParsing="false" onAction="#handleButtonInserir" prefHeight="25.0" prefWidth="64.0" text="Inserir" />
                   <Button fx:id="buttonAlterar" layoutX="162.0" layoutY="358.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="64.0" text="Alterar" />
                   <Button fx:id="buttonRemover" layoutX="243.0" layoutY="358.0" mnemonicParsing="false" text="Remover" />
                </children>

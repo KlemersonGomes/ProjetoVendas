@@ -25,6 +25,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -164,4 +165,28 @@ public class TelaVendasController implements Initializable {
         return controller.isButtonConfirmarClicked();
     }
     
+     
+    @FXML
+    public void handleButtonRemover() throws IOException, SQLException {
+        Venda venda = tableViewVendas.getSelectionModel().getSelectedItem();
+        if (venda != null) {
+            connection.setAutoCommit(false);
+            vendaDAO.setConnection(connection);
+            itemVendaDAO.setConnection(connection);
+            produtoDAO.setConnection(connection);
+            for (ItemVenda listItemVenda : venda.getItensVenda()) {
+                Produto produto = listItemVenda.getProduto();
+                produto.setQuantidade(produto.getQuantidade() + listItemVenda.getQuantidade());
+                produtoDAO.alterar(produto);
+                itemVendaDAO.remover(listItemVenda);
+            }
+            vendaDAO.remover(venda);
+            connection.commit();
+            carregarTableViewVendas();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Por favor, escolha uma venda na Tabela!");
+            alert.show();
+        }
+    }
 }

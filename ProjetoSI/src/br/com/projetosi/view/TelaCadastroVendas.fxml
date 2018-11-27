@@ -47,7 +47,7 @@
               </columns>
             </TableView>
             <TextField fx:id="textFieldVendaValor" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <HBox alignment="CENTER" prefHeight="33.0" prefWidth="291.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <children>
                   <ComboBox fx:id="comboBoxVendaProduto" prefHeight="25.0" prefWidth="160.0" promptText="Selecione o Produto" />
                   <TextField fx:id="textFieldVendaQuantidade" prefHeight="25.0" prefWidth="41.0" />

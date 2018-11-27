@@ -66,7 +66,7 @@ public class ProdutoDAO {
     }
 
     public boolean remover(Produto produto) {
-        String sql = "DELETE FROM produtos WHERE idCliente=?";
+        String sql = "DELETE FROM produtos WHERE idProduto=?";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setLong(1, produto.getIdProduto());

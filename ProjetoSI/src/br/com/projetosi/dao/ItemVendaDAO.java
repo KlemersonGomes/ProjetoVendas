@@ -66,6 +66,19 @@ public class ItemVendaDAO {
             return false;
         }
     }
+    
+    public boolean removerItem(Produto produto) {
+        String sql = "DELETE FROM itensVenda WHERE idProduto=?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setLong(1, produto.getIdProduto());
+            stmt.execute();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(ItemVendaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
 
     public List<ItemVenda> listar() {
         String sql = "SELECT * FROM itensVenda";
@@ -172,4 +185,41 @@ public class ItemVendaDAO {
         return retorno;
     }
 
+    public ItemVenda buscarPorProduto(Produto p) {
+        String sql = "SELECT FROM itensVenda WHERE idProduto=?";
+        ItemVenda retorno = new ItemVenda();
+        ItemVenda itemVenda = new ItemVenda();
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setLong(1, p.getIdProduto());
+            ResultSet resultado = stmt.executeQuery();
+            if (resultado.next()) {
+                Produto produto = new Produto();
+                Venda venda = new Venda();
+                itemVenda.setIdItemVenda(resultado.getLong("idItemVenda"));
+                itemVenda.setQuantidade(resultado.getInt("quantidade"));
+                itemVenda.setValor(resultado.getDouble("valor"));
+
+                produto.setIdProduto(resultado.getLong("idProduto"));
+                venda.setIdVenda(resultado.getInt("idVenda"));
+
+                ProdutoDAO produtoDAO = new ProdutoDAO();
+                produtoDAO.setConnection(connection);
+                produto = produtoDAO.buscar(produto);
+
+                VendaDAO vendaDAO = new VendaDAO();
+                vendaDAO.setConnection(connection);
+                venda = vendaDAO.buscar(venda);
+
+                itemVenda.setProduto(produto);
+                itemVenda.setVenda(venda);
+
+                retorno = itemVenda;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(VendaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return retorno;
+    }
+    
 }

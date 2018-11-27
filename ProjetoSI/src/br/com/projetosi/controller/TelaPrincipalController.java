@@ -46,9 +46,21 @@ public class TelaPrincipalController implements Initializable {
     }
     
     @FXML
+    public void handleMenuItemProduto() throws IOException {
+        AnchorPane a = (AnchorPane)FXMLLoader.load(getClass().getResource("/br/com/projetosi/view/TelaProduto.fxml"));
+        anchorPane.getChildren().setAll(a);
+    }
+    
+    @FXML
     public void handleMenuItemVendas() throws IOException {
         
         AnchorPane a = FXMLLoader.load(getClass().getResource("/br/com/projetosi/view/TelaVendas.fxml"));
+        anchorPane.getChildren().setAll(a);
+    }
+    
+    @FXML
+    public void handleMenuItemCategoria() throws IOException {
+        AnchorPane a = FXMLLoader.load(getClass().getResource("/br/com/projetosi/view/TelaCategoria.fxml"));
         anchorPane.getChildren().setAll(a);
     }
     

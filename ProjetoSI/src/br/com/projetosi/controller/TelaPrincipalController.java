@@ -30,7 +30,7 @@ public class TelaPrincipalController implements Initializable {
     @FXML
     private MenuItem menuItemProcessosVendas;
     @FXML
-    private MenuItem menuItemRelatorioEstoque;
+    private MenuItem menuItemRelatorioProdutos;
     @FXML
     private AnchorPane anchorPane;
 
@@ -64,7 +64,11 @@ public class TelaPrincipalController implements Initializable {
         anchorPane.getChildren().setAll(a);
     }
     
-    
+    @FXML
+    public void handleMenuItemRelatoriosQuantidadeProdutos() throws IOException {
+        AnchorPane a = (AnchorPane) FXMLLoader.load(getClass().getResource("/br/com/projetosi/view/TelaRelatorioQuantidadeProduto.fxml"));
+        anchorPane.getChildren().setAll(a);
+    }
     
 
 }
